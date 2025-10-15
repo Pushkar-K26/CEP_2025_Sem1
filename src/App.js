@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import LoginScreen from "./components/LoginScreen.js";
+import MainApp from "./components/MainApp.js";
+import "./App.css";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  // On initial load, check if a user is saved in localStorage
+  useEffect(() => {
+    const savedUser = JSON.parse(localStorage.getItem("currentUser") || "null");
+    if (savedUser) {
+      setCurrentUser(savedUser);
+    }
+  }, []);
+
+  const handleLogin = (user) => {
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    setCurrentUser(user);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("currentUser");
+    setCurrentUser(null);
+  };
+
+  const handleProfileUpdate = (updatedUser) => {
+    setCurrentUser(updatedUser);
+    localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+    const users = JSON.parse(localStorage.getItem("users") || "{}");
+    users[updatedUser.email] = updatedUser;
+    localStorage.setItem("users", JSON.stringify(users));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {currentUser ? (
+        <MainApp
+          user={currentUser}
+          onLogout={handleLogout}
+          onProfileUpdate={handleProfileUpdate}
+        />
+      ) : (
+        <LoginScreen onLogin={handleLogin} />
+      )}
+    </>
   );
 }
 

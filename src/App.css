@@ -1,38 +1,169 @@
-.App {
-  text-align: center;
-}
+/* MedScan - Medical Allergen Scanner Styles */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Login Screen Styles */
+.login-container {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Main Application Styles */
+.main-app {
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Profile Card Styles */
+.profile-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Scanner Area Styles */
+.scanner-area {
+  border: 3px dashed #dee2e6;
+  border-radius: 15px;
+  min-height: 300px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.scanner-area:hover {
+  border-color: #007bff;
+  background: #f8f9ff;
+}
+
+.scanner-area.active {
+  border-color: #28a745;
+  background: #f8fff8;
+}
+
+.scanner-area.dragover {
+  border-color: #28a745;
+  background: #f8fff8;
+}
+
+/* Health Score Styles */
+.health-score {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.score-good {
+  color: #28a745;
+}
+
+.score-warning {
+  color: #ffc107;
+}
+
+.score-danger {
+  color: #dc3545;
+}
+
+/* Allergen Tag Styles */
+.allergen-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 2px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.allergen-found {
+  background: #dc3545;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.allergen-safe {
+  background: #28a745;
+  color: white;
 }
 
-@keyframes App-logo-spin {
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+/* Camera Preview Styles */
+.camera-preview {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+/* Navigation Styles */
+.nav-pills .nav-link.active {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+/* Medical Form Styles */
+.medical-form {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-section {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Button Hover Effects */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Hover Effects */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Progress Bar Animations */
+.progress-bar {
+  transition: width 0.8s ease-in-out;
+}
+
+/* Form Input Focus Effects */
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .health-score {
+    font-size: 2rem;
+  }
+
+  .medical-form {
+    padding: 1.5rem;
+  }
+
+  .scanner-area {
+    min-height: 250px;
+  }
+
+  .camera-preview {
+    max-width: 100%;
   }
 }
